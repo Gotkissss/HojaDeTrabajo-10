@@ -1,13 +1,13 @@
 import java.util.*;
 
 public class Grafo {
-    int INF = 999999;
-    int[][] matriz;
-    int[][] caminos;
-    String[] ciudades;
-    HashMap<String, Integer> nombreAIndice;
-    HashMap<Integer, String> indiceANombre;
-    int cantidad;
+    public int INF = 999999;
+    public int[][] matriz;
+    public int[][] caminos;
+    public String[] ciudades;
+    public HashMap<String, Integer> nombreAIndice;
+    public HashMap<Integer, String> indiceANombre;
+    public int cantidad;
 
     public Grafo(ArrayList<String> nombres) {
         cantidad = nombres.size();
@@ -18,18 +18,14 @@ public class Grafo {
         indiceANombre = new HashMap<>();
 
         for (int i = 0; i < cantidad; i++) {
-            ciudades[i] = nombres.get(i);
+            ciudades[i] = nombres.get(i).trim();
             nombreAIndice.put(ciudades[i], i);
             indiceANombre.put(i, ciudades[i]);
         }
 
         for (int i = 0; i < cantidad; i++) {
             for (int j = 0; j < cantidad; j++) {
-                if (i == j) {
-                    matriz[i][j] = 0;
-                } else {
-                    matriz[i][j] = INF;
-                }
+                matriz[i][j] = (i == j) ? 0 : INF;
             }
         }
     }
@@ -53,11 +49,7 @@ public class Grafo {
         for (int i = 0; i < cantidad; i++) {
             for (int j = 0; j < cantidad; j++) {
                 nuevaMatriz[i][j] = matriz[i][j];
-                if (i != j && matriz[i][j] != INF) {
-                    caminos[i][j] = i;
-                } else {
-                    caminos[i][j] = -1;
-                }
+                caminos[i][j] = (i != j && matriz[i][j] != INF) ? i : -1;
             }
         }
 
@@ -107,7 +99,6 @@ public class Grafo {
             }
         }
 
-        if (mejorCiudad == -1) return "No hay centro";
-        return ciudades[mejorCiudad];
+        return (mejorCiudad == -1) ? "No hay centro" : ciudades[mejorCiudad];
     }
 }

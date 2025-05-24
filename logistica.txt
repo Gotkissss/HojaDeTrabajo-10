@@ -1,0 +1,7 @@
+Guatemala ElProgreso 2 3 4 6
+Guatemala Chimaltenango 1 2 3 5
+ElProgreso Zacapa 2 3 4 8
+Zacapa Chiquimula 3 5 6 9
+Chimaltenango Solola 3 4 5 10
+Solola Quetzaltenango 2 3 4 7
+Quetzaltenango Retalhuleu 1 2 3 5
